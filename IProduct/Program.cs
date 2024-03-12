@@ -2,7 +2,13 @@
 {
     internal class Program
     {
-        static void Main()
+        //Se requiere crear diferentes tipos de muebles, teniendo en cuenta que en cualquier momento se ingresa un mueble nuevo a la coleccion,
+        //y se debe poder crear sin modificar lo que ya existe para no afectar la creacion de los muebles que ya se estaba produciendo
+
+        //El factory Method es apropiado para este problema ya que el cliente no necesita saber cómo se crean los objetos,
+        //solo trabaja con el cliente y las fabricas concretas. Cuando ingresen nuevos muebles a la coleccion solo sera necesario crearles sus fabricas concretas
+
+        private static void Main()
         {
             FabricaDeMuebles fabrica;
 
@@ -12,15 +18,16 @@
             fabrica = new FabricaDeSofas();
             Console.WriteLine(fabrica.FabricarMueble());
 
-            fabrica = new FabricaDeMesasDeCafe();
+            fabrica = new FabricaDeMesasDeCentro();
             Console.WriteLine(fabrica.FabricarMueble());
         }
-        
     }
+
     public interface IMueble
     {
         string Descripcion();
     }
+
     public class Silla : IMueble
     {
         public string Descripcion()
@@ -33,15 +40,15 @@
     {
         public string Descripcion()
         {
-            return "Sofá";
+            return "Sofa";
         }
     }
 
-    public class MesaDeCafe : IMueble
+    public class MesaDeCentro : IMueble
     {
         public string Descripcion()
         {
-            return "Café";
+            return "Mesa de Centro";
         }
     }
 
@@ -72,12 +79,11 @@
         }
     }
 
-    public class FabricaDeMesasDeCafe : FabricaDeMuebles
+    public class FabricaDeMesasDeCentro : FabricaDeMuebles
     {
         public override IMueble CrearMueble()
         {
-            return new MesaDeCafe();
+            return new MesaDeCentro();
         }
     }
-
 }

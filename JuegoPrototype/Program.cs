@@ -5,7 +5,8 @@
         static void Main()
         {
             //Problema: tenemos un videojuego con 2 tipos de personajes, y cada uno es muy costo de generar por las gráficas
-            // y con el patron Prototype solo se crean 1 vez cada uno y luego se clonan
+            // y con el patron Prototype solo se crean 1 vez cada uno y luego se clonan, y se modifican
+            // las propiedades del clon para hacerlos diferentes
             
             
             Caballero caballeroOriginal = new("Caballero Original", 14, 10);
